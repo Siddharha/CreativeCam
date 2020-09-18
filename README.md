@@ -1,7 +1,7 @@
 # CreativeCam
 # How To Use
 
-## Request For the CamActivity
+#### Request For the CamActivity
 	 val intent_cam = Intent(this,CamViewActivity::class.java)
         intent_cam.putExtra(CamUtil.CAM_FACING,1)			//For What Camera to use
         intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,false)		//For Font and back cam switch options
@@ -10,7 +10,7 @@
         intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR,"#ffffff")
 	
         startActivityForResult(intent_cam,CREATIVE_CAM_REQ)		//requesting for capture photo
-## Get Image For use
+#### Get Image For use
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         val path = data?.getStringExtra(CamUtil.IMG_FILE_PATH)
