@@ -35,8 +35,8 @@
         maven { url 'https://jitpack.io' }
       }
     }
-   
-  
+
+# Gradle
   	dependencies {
 	        implementation 'com.github.Siddharha:CreativeCam:1.0.3'
 	}
