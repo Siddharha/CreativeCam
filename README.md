@@ -1,4 +1,5 @@
 # CreativeCam
+	This Library creaded for those who wanna use Custom simple Camera in there Android app. This project uses Camera API 2. Try out this library by adding simple gradle link to your project.
 # How To Use
 
 #### Request For the CamActivity
