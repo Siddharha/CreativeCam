@@ -27,7 +27,7 @@
         //imgDisplay.setImageURI(imageUri)
     }
 	
-# To use the library add below code to your project 
+ # Gradle
 
   	allprojects {
       repositories {
@@ -36,7 +36,7 @@
       }
     }
 
-# Gradle
+
   	dependencies {
 	        implementation 'com.github.Siddharha:CreativeCam:1.0.3'
 	}
