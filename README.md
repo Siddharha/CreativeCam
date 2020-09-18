@@ -11,5 +11,5 @@
    
   
   	dependencies {
-	        implementation 'com.github.Siddharha:CreativeCam:1.0.0'
+	        implementation 'com.github.Siddharha:CreativeCam:1.0.3'
 	}
