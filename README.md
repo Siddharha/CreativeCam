@@ -1,5 +1,8 @@
 # CreativeCam
 his Library creaded for those who wanna use Custom simple Camera in there Android app. This project uses Camera API 2. Try out this library by adding simple gradle link to your project.
+
+[![](https://jitpack.io/v/Siddharha/CreativeCam.svg)](https://jitpack.io/#Siddharha/CreativeCam)
+
 # How To Use
 
 #### Request For the CamActivity
