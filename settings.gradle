@@ -1,0 +1,3 @@
+include ':CreativeCam'
+include ':app'
+rootProject.name = "Camera 2 API Demo"
