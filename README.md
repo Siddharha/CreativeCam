@@ -49,7 +49,7 @@ his Library creaded for those who wanna use Custom simple Camera in there Androi
 
 
   	dependencies {
-	        implementation 'com.github.Siddharha:CreativeCam:1.0.4'
+	        implementation 'com.github.Siddharha:CreativeCam:Tag'
 	}
  # License	
 Copyright 2020 Siddhartha Maji
