@@ -10,13 +10,17 @@ his Library creaded for those who wanna use Custom simple Camera in there Androi
 
 #### Request For the CamActivity
 	 val intent_cam = Intent(this,CamViewActivity::class.java)
-        intent_cam.putExtra(CamUtil.CAM_FACING,1)			//For What Camera to use
-        intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,false)		//For Font and back cam switch options
-	
-        intent_cam.putExtra(CamUtil.CAPTURE_BTN_COLOR,"#00bcd4")	//to change color of Capture button
-        intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR,"#ffffff")
-	
-        startActivityForResult(intent_cam,CREATIVE_CAM_REQ)		//requesting for capture photo
+             intent_cam.putExtra(CamUtil.CAM_FACING,1)
+             intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,true)
+             
+             intent_cam.putExtra(CamUtil.CAPTURE_BTN_COLOR,Color.BLUE)
+             intent_cam.putExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.MAGENTA)
+     
+             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR,Color.YELLOW)
+             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.BLACK)
+     
+             intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR,Color.WHITE)
+             startActivityForResult(intent_cam,CREATIVE_CAM_REQ)
 #### Get Image For use
 	override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
