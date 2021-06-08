@@ -8,6 +8,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.ColorFilter
 import android.graphics.ImageFormat
 import android.graphics.SurfaceTexture
 import android.hardware.camera2.*
@@ -30,6 +31,7 @@ import kotlinx.android.synthetic.main.cam_activity_layout.*
 import org.jetbrains.anko.activityUiThread
 import org.jetbrains.anko.doAsync
 import java.io.*
+import java.lang.Exception
 import java.nio.ByteBuffer
 import java.util.*
 import kotlin.collections.ArrayList
@@ -144,7 +146,7 @@ class CamViewActivity : AppCompatActivity() {
         val readerListener = ImageReader.OnImageAvailableListener { imageReader ->
             var image: Image? = null
             try {
-                image = reader!!.acquireLatestImage()
+                image = reader.acquireLatestImage()
                 val buffer: ByteBuffer = image.planes[0].buffer
                 val bytes = ByteArray(buffer.capacity())
                 buffer.get(bytes)
@@ -207,7 +209,7 @@ class CamViewActivity : AppCompatActivity() {
             outputStream = FileOutputStream(file!!)
             outputStream.write(bytes)
         } finally {
-            if (outputStream != null) outputStream.close()
+            outputStream?.close()
         }
     }
 
@@ -253,10 +255,23 @@ class CamViewActivity : AppCompatActivity() {
     private fun initialize() {
 
         if (intent.hasExtra(CamUtil.CAPTURE_BTN_COLOR)) {
-            fabCapture.backgroundTintList = ColorStateList.valueOf( Color.parseColor( intent.getStringExtra(CamUtil.CAPTURE_BTN_COLOR)))
+            fabCapture.backgroundTintList = ColorStateList.valueOf(  intent.getIntExtra(CamUtil.CAPTURE_BTN_COLOR,Color.BLACK))
         }
+        if (intent.hasExtra(CamUtil.CAPTURE_BTN_ICON_COLOR)) {
+            fabCapture.setColorFilter(  intent.getIntExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.BLACK))
+        }
+
+        //SWITCH_CAM_BTN_ICON_COLOR
+        if (intent.hasExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR)) {
+            fabCamSwitch.setColorFilter(intent.getIntExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.BLACK))
+        }
+
+        if (intent.hasExtra(CamUtil.SWITCH_CAM_BTN_COLOR)) {
+            fabCamSwitch.backgroundTintList = ColorStateList.valueOf(  intent.getIntExtra(CamUtil.SWITCH_CAM_BTN_COLOR,Color.BLACK))
+        }
+
         if (intent.hasExtra(CamUtil.CAPTURE_CONTROL_COLOR)) {
-            fmControl.setBackgroundColor(Color.parseColor(intent.getStringExtra(CamUtil.CAPTURE_CONTROL_COLOR)))
+            fmControl.setBackgroundColor(intent.getIntExtra(CamUtil.CAPTURE_CONTROL_COLOR,Color.WHITE))
         }
         ORIENTATIONS.append(Surface.ROTATION_0,90)
         ORIENTATIONS.append(Surface.ROTATION_90,0)
@@ -323,7 +338,7 @@ class CamViewActivity : AppCompatActivity() {
                     Toast.makeText(this@CamViewActivity, "Changed", Toast.LENGTH_SHORT).show()
                 }
             }, null)
-        } catch (@SuppressLint("NewApi") e: CameraAccessException) {
+        } catch ( e: Exception) {
             e.printStackTrace()
         }
 
@@ -338,7 +353,7 @@ class CamViewActivity : AppCompatActivity() {
 
             cameraCaptureSessions!!.setRepeatingRequest(captureRequestBuilder!!.build(), null, mBackgroundHandler)
 
-        } catch (@SuppressLint("NewApi") e: CameraAccessException) {
+        } catch (e: Exception) {
             e.printStackTrace()
         }
     }
@@ -373,7 +388,7 @@ class CamViewActivity : AppCompatActivity() {
                     return
                 }
                 manager.openCamera(cameraId!!, stateCallback!!, null)
-            } catch (@SuppressLint("NewApi") e: CameraAccessException) {
+            } catch (e: Exception) {
                 e.printStackTrace()
             }
         }
