@@ -1,10 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="in.creativelizard.creativecam">
 
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
     <application>
-        <activity android:name=".CamViewActivity">
+        <activity android:name=".CamViewActivity"
+            android:requestLegacyExternalStorage="true">
         </activity>
     </application>
 </manifest>

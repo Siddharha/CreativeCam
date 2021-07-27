@@ -15,11 +15,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextureView
-            android:id="@+id/txMain"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+        <androidx.camera.view.PreviewView
+            android:id="@+id/pvPreview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
