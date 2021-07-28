@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -7,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#777777</color>
+    <color name="colorAccent">#313131</color>
 </resources>

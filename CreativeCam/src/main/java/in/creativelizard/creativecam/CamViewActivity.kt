@@ -83,12 +83,12 @@ class CamViewActivity : AppCompatActivity() {
                 Color.BLACK))
         }
         if (intent.hasExtra(CamUtil.CAPTURE_BTN_ICON_COLOR)) {
-            fabCapture.setColorFilter(  intent.getIntExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.BLACK))
+            fabCapture.setColorFilter(  intent.getIntExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.WHITE))
         }
 
         //SWITCH_CAM_BTN_ICON_COLOR
         if (intent.hasExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR)) {
-            fabCamSwitch.setColorFilter(intent.getIntExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.BLACK))
+            fabCamSwitch.setColorFilter(intent.getIntExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.WHITE))
         }
 
         if (intent.hasExtra(CamUtil.SWITCH_CAM_BTN_COLOR)) {
