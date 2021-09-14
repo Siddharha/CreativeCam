@@ -27,4 +27,15 @@
         app:layout_constraintEnd_toEndOf="@+id/imgDisplay"
         app:layout_constraintStart_toStartOf="@+id/imgDisplay"
         app:layout_constraintTop_toBottomOf="@+id/imgDisplay" />
+
+    <Button
+        android:id="@+id/btnft"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Take Image"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imgDisplay"
+        app:layout_constraintStart_toStartOf="@+id/imgDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/btnTakeImage"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,7 @@
 package `in`.creativelizard.creativecam
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.content.res.ColorStateList
@@ -153,6 +154,7 @@ class CamViewActivity : AppCompatActivity() {
         val outputFileOptions = ImageCapture.OutputFileOptions.Builder(file).build()
         imageCapture?.takePicture(outputFileOptions, cameraExecutor, object : ImageCapture.
         OnImageSavedCallback {
+            @SuppressLint("RestrictedApi")
             override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
                 val msg = "Photo capture succeeded: ${file.absolutePath}"
                 pvPreview.post {
@@ -161,6 +163,8 @@ class CamViewActivity : AppCompatActivity() {
                 resultIntent.putExtra(CamUtil.IMG_FILE_PATH, file.absolutePath )
 
                 setResult(Activity.RESULT_OK,resultIntent)
+                    imagePreview?.camera?.close()
+                    //releaseInstance()
                 finish()
                 }
             }
