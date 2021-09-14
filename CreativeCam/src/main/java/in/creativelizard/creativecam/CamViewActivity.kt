@@ -120,24 +120,29 @@ class CamViewActivity : AppCompatActivity() {
     private fun startCamera(facing: Int) {
 // Create preview use case
 
-        val cameraSelector = CameraSelector.Builder().requireLensFacing(facing).build()
-        cameraProviderFuture.addListener({
-            imagePreview = Preview.Builder().apply {
-                setTargetAspectRatio(AspectRatio.RATIO_16_9)
-                setTargetRotation(pvPreview.display.rotation)
-            }.build()
+        try{
+            val cameraSelector = CameraSelector.Builder().requireLensFacing(facing).build()
+            cameraProviderFuture.addListener({
+                imagePreview = Preview.Builder().apply {
+                    setTargetAspectRatio(AspectRatio.RATIO_16_9)
+                    setTargetRotation(pvPreview.display.rotation)
+                }.build()
 
-            imageCapture = ImageCapture.Builder().apply {
-                setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                setFlashMode(ImageCapture.FLASH_MODE_AUTO)
-            }.build()
+                imageCapture = ImageCapture.Builder().apply {
+                    setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+                    setFlashMode(ImageCapture.FLASH_MODE_AUTO)
+                }.build()
 
 
-            val camera = cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview)
-            pvPreview.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
-            imagePreview?.setSurfaceProvider(pvPreview.surfaceProvider)
-            cameraProvider.bindToLifecycle(this, cameraSelector,imageCapture)
-        }, ContextCompat.getMainExecutor(this))
+                val camera = cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview)
+                pvPreview.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
+                imagePreview?.setSurfaceProvider(pvPreview.surfaceProvider)
+                cameraProvider.bindToLifecycle(this, cameraSelector,imageCapture)
+            }, ContextCompat.getMainExecutor(this))
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
+
 
     }
 
