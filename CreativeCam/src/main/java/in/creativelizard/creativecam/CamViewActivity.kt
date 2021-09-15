@@ -33,8 +33,15 @@ class CamViewActivity : AppCompatActivity() {
     private val cameraExecutor:ExecutorService by lazy {Executors.newSingleThreadExecutor()}
     private val mPreview:PreviewView by lazy { findViewById(R.id.pvPreview) }
     private  val imagePreview: Preview by lazy{Preview.Builder().apply {
-        setTargetAspectRatio(AspectRatio.RATIO_16_9)
-        setTargetRotation(mPreview.display.rotation)
+        try{
+            setTargetAspectRatio(AspectRatio.RATIO_16_9)
+            setTargetRotation(mPreview.display.rotation)
+        }catch (e:Exception){
+            e.printStackTrace()
+        }finally {
+            print("ex happend!")
+        }
+
     }.build()}
 
     private val imageCapture: ImageCapture by lazy {ImageCapture.Builder().apply {
@@ -114,6 +121,7 @@ class CamViewActivity : AppCompatActivity() {
             facing = CameraSelector.LENS_FACING_BACK
         }
 
+        cameraProvider.unbindAll()
         startCamera(facing)
     }
 

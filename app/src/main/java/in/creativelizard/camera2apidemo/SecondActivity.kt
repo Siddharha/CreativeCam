@@ -4,54 +4,37 @@ import `in`.creativelizard.creativecam.CamUtil
 import `in`.creativelizard.creativecam.CamViewActivity
 import android.app.Activity
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.graphics.Color
 import android.net.Uri
-import android.os.*
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_second.*
+import kotlinx.android.synthetic.main.activity_second.imgDisplay
 import java.io.File
 
-
-class MainActivity : AppCompatActivity() {
-
-val CREATIVE_CAM_REQ = 1
+class SecondActivity : AppCompatActivity() {
+    val CREATIVE_CAM_REQ = 1
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initialize()
+        setContentView(R.layout.activity_second)
         onActionPerform()
     }
 
-    private fun initialize() {
-
-    }
-
     private fun onActionPerform() {
-        imgDisplay.setOnClickListener {
-            openImageCapture()
+        btnft.setOnClickListener {
+            val intent_cam = Intent(this, CamViewActivity::class.java)
+            intent_cam.putExtra(CamUtil.CAM_FACING,0)
+            intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,true)
+            intent_cam.putExtra(CamUtil.CAPTURE_BTN_COLOR, Color.BLUE)
+            intent_cam.putExtra(CamUtil.CAPTURE_BTN_ICON_COLOR, Color.MAGENTA)
+
+            intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR, Color.YELLOW)
+            intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR, Color.BLACK)
+
+            intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR, Color.WHITE)
+            startActivityForResult(intent_cam,CREATIVE_CAM_REQ)
         }
-
-        btnNext.setOnClickListener {
-            startActivity(Intent(this,SecondActivity::class.java))
-        }
-
-    }
-
-    private fun openImageCapture() {
-        val intent_cam = Intent(this,CamViewActivity::class.java)
-        intent_cam.putExtra(CamUtil.CAM_FACING,1)
-        intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,true)
-        intent_cam.putExtra(CamUtil.CAPTURE_BTN_COLOR,Color.BLUE)
-        intent_cam.putExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.MAGENTA)
-
-        intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR,Color.YELLOW)
-        intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.BLACK)
-
-        intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR,Color.WHITE)
-        startActivityForResult(intent_cam,CREATIVE_CAM_REQ)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -73,5 +56,3 @@ val CREATIVE_CAM_REQ = 1
         }
     }
 }
-
-
