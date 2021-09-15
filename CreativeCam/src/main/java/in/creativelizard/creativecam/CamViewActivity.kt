@@ -27,11 +27,21 @@ import java.util.concurrent.Executors
 
 class CamViewActivity : AppCompatActivity() {
 
-    private lateinit var imagePreview: Preview
-    private lateinit var imageCapture: ImageCapture
+
+
     private lateinit var camera:Camera
     private val cameraExecutor:ExecutorService by lazy {Executors.newSingleThreadExecutor()}
     private val mPreview:PreviewView by lazy { findViewById(R.id.pvPreview) }
+    private  val imagePreview: Preview by lazy{Preview.Builder().apply {
+        setTargetAspectRatio(AspectRatio.RATIO_16_9)
+        setTargetRotation(mPreview.display.rotation)
+    }.build()}
+
+    private val imageCapture: ImageCapture by lazy {ImageCapture.Builder().apply {
+        setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
+        setFlashMode(ImageCapture.FLASH_MODE_AUTO)
+    }.build()}
+
     private var facing = 1
     private val cameraProviderFuture:ListenableFuture<ProcessCameraProvider> by lazy {ProcessCameraProvider.getInstance(this)}
     private val cameraProvider:ProcessCameraProvider by lazy{cameraProviderFuture.get()}
@@ -110,27 +120,20 @@ class CamViewActivity : AppCompatActivity() {
     private fun startCamera(facing: Int) {
 // Create preview use case
 
+        try {
             val cameraSelector = CameraSelector.Builder().requireLensFacing(facing).build()
             cameraProviderFuture.addListener({
-                imagePreview =Preview.Builder().apply {
-                    setTargetAspectRatio(AspectRatio.RATIO_16_9)
-                    setTargetRotation(mPreview.display.rotation)
-                }.build()
-
-                imageCapture = ImageCapture.Builder().apply {
-                    setCaptureMode(ImageCapture.CAPTURE_MODE_MINIMIZE_LATENCY)
-                    setFlashMode(ImageCapture.FLASH_MODE_AUTO)
-                }.build()
-
-                    camera = cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview)
+                camera = cameraProvider.bindToLifecycle(this, cameraSelector, imagePreview)
 
 
                 mPreview.implementationMode = PreviewView.ImplementationMode.COMPATIBLE
                 imagePreview.setSurfaceProvider(mPreview.surfaceProvider)
-                cameraProvider.bindToLifecycle(this, cameraSelector,imageCapture)
+                cameraProvider.bindToLifecycle(this, cameraSelector, imageCapture)
             }, ContextCompat.getMainExecutor(this))
 
-
+        }catch (e:Exception){
+            e.printStackTrace()
+        }
 
     }
 
@@ -145,14 +148,15 @@ class CamViewActivity : AppCompatActivity() {
             PHOTO_EXTENSION
         )
         val outputFileOptions = ImageCapture.OutputFileOptions.Builder(file).build()
-        imageCapture?.takePicture(outputFileOptions, cameraExecutor, object : ImageCapture.
+        imageCapture.takePicture(outputFileOptions, cameraExecutor, object : ImageCapture.
         OnImageSavedCallback {
             override fun onImageSaved(outputFileResults: ImageCapture.OutputFileResults) {
 
                 val msg = "Photo capture succeeded: ${file.absolutePath}"
                 mPreview.post {
-                    //Toast.makeText(this@CamViewActivity, msg, Toast.LENGTH_LONG).show()
                     cameraProvider.unbindAll()
+                    //Toast.makeText(this@CamViewActivity, msg, Toast.LENGTH_LONG).show()
+
                                     val resultIntent =  Intent()
                 resultIntent.putExtra(CamUtil.IMG_FILE_PATH, file.absolutePath )
 
