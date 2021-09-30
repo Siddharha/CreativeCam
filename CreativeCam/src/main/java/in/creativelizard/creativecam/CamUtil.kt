@@ -6,6 +6,9 @@ class CamUtil {
         val CAPTURE_BTN_COLOR = "capture_btn_color"
         val CAPTURE_CONTROL_COLOR = "capture_cont_color"
         val CAPTURE_BTN_ICON_COLOR = "CAPTURE_BTN_ICON_COLOR"
+        val TARGET_BOX = "target_box"
+        val TARGET_COLOR = "target_color"
+        val TARGET_WIDTH = "TARGET_WIDTH"
 
         val SWITCH_CAM_BTN_COLOR = "SWITCH_CAM_BTN_COLOR"
         val SWITCH_CAM_BTN_ICON_COLOR = "SWITCH_CAM_BTN_ICON_COLOR"

@@ -4,7 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.2708333333333333" />
-        <entry key="CreativeCam/src/main/res/layout/cam_activity_layout.xml" value="0.1" />
+        <entry key="CreativeCam/src/main/res/drawable/target_box.xml" value="0.2604166666666667" />
+        <entry key="CreativeCam/src/main/res/layout/cam_activity_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.24427083333333333" />
         <entry key="app/src/main/res/layout/activity_second.xml" value="0.24051282051282052" />
       </map>

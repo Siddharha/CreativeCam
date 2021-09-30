@@ -6,6 +6,8 @@ import android.app.ProgressDialog
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.ColorFilter
+import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.view.View
 import android.widget.ProgressBar
@@ -86,6 +88,23 @@ class CamViewActivity : AppCompatActivity() {
     }
 
     private fun initialize(){
+
+        if (intent.hasExtra(CamUtil.TARGET_BOX)) {
+            //TARGET_COLOR
+        imgTargetBox.visibility = intent.getIntExtra(CamUtil.TARGET_BOX,View.GONE)
+        }
+
+        if(intent.hasExtra(CamUtil.TARGET_COLOR)){
+            val drawable = imgTargetBox.drawable as GradientDrawable
+            drawable.setStroke(intent.getIntExtra(CamUtil.TARGET_WIDTH,1),
+                intent.getIntExtra(CamUtil.TARGET_COLOR, Color.TRANSPARENT),
+            10f,
+                1f) // set stroke width and stroke color
+
+        /*.setColorFilter(
+                intent.getIntExtra(CamUtil.TARGET_COLOR, Color.TRANSPARENT)
+            )*/
+        }
                 if (intent.hasExtra(CamUtil.CAPTURE_BTN_COLOR)) {
             fabCapture.backgroundTintList = ColorStateList.valueOf(  intent.getIntExtra(CamUtil.CAPTURE_BTN_COLOR,
                 Color.BLACK))

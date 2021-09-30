@@ -8,6 +8,7 @@ import android.graphics.Color
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_second.*
 import kotlinx.android.synthetic.main.activity_second.imgDisplay
@@ -31,7 +32,9 @@ class SecondActivity : AppCompatActivity() {
 
             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR, Color.YELLOW)
             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR, Color.BLACK)
-
+            intent_cam.putExtra(CamUtil.TARGET_BOX, View.VISIBLE)
+            intent_cam.putExtra(CamUtil.TARGET_COLOR, Color.parseColor("#00bcd4"))
+            intent_cam.putExtra(CamUtil.TARGET_WIDTH, 5)
             intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR, Color.WHITE)
             startActivityForResult(intent_cam,CREATIVE_CAM_REQ)
         }

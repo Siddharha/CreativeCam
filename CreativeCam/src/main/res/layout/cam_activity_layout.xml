@@ -20,6 +20,13 @@
             android:id="@+id/pvPreview"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+    <ImageView
+        android:scaleType="center"
+        android:id="@+id/imgTargetBox"
+        android:src="@drawable/target_box"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
