@@ -7,6 +7,7 @@ class CamUtil {
         val CAPTURE_CONTROL_COLOR = "capture_cont_color"
         val CAPTURE_BTN_ICON_COLOR = "CAPTURE_BTN_ICON_COLOR"
         val TARGET_BOX = "target_box"
+        val TARGET_BOX_TYPE = "target_box_type"
         val TARGET_COLOR = "target_color"
         val TARGET_WIDTH = "TARGET_WIDTH"
 

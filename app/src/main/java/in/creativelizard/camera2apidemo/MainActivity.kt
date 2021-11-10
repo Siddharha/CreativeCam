@@ -9,6 +9,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.os.*
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,7 +47,7 @@ val CREATIVE_CAM_REQ = 1
         intent_cam.putExtra(CamUtil.CAM_SWITCH_OPT,true)
         intent_cam.putExtra(CamUtil.CAPTURE_BTN_COLOR,Color.BLUE)
         intent_cam.putExtra(CamUtil.CAPTURE_BTN_ICON_COLOR,Color.MAGENTA)
-
+        intent_cam.putExtra(CamUtil.TARGET_BOX, View.GONE)
         intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR,Color.YELLOW)
         intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR,Color.BLACK)
 

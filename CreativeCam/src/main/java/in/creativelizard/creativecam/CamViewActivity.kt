@@ -92,6 +92,13 @@ class CamViewActivity : AppCompatActivity() {
         if (intent.hasExtra(CamUtil.TARGET_BOX)) {
             //TARGET_COLOR
         imgTargetBox.visibility = intent.getIntExtra(CamUtil.TARGET_BOX,View.GONE)
+            if(intent.hasExtra(CamUtil.TARGET_BOX_TYPE)){
+               if( intent.getIntExtra(CamUtil.TARGET_BOX_TYPE,0)==1){
+                    imgTargetBox.setImageDrawable(resources.getDrawable(R.drawable.target_box_wide))
+                }
+
+            }
+
         }
 
         if(intent.hasExtra(CamUtil.TARGET_COLOR)){

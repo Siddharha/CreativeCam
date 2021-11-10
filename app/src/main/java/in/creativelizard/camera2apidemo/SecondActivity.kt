@@ -33,6 +33,7 @@ class SecondActivity : AppCompatActivity() {
             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_COLOR, Color.YELLOW)
             intent_cam.putExtra(CamUtil.SWITCH_CAM_BTN_ICON_COLOR, Color.BLACK)
             intent_cam.putExtra(CamUtil.TARGET_BOX, View.VISIBLE)
+            intent_cam.putExtra(CamUtil.TARGET_BOX_TYPE, 1)
             intent_cam.putExtra(CamUtil.TARGET_COLOR, Color.parseColor("#00bcd4"))
             intent_cam.putExtra(CamUtil.TARGET_WIDTH, 5)
             intent_cam.putExtra(CamUtil.CAPTURE_CONTROL_COLOR, Color.WHITE)
