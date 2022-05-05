@@ -19,7 +19,6 @@ import androidx.camera.view.PreviewView
 import androidx.core.content.ContextCompat
 import com.google.common.util.concurrent.ListenableFuture
 import kotlinx.android.synthetic.main.cam_activity_layout.*
-import org.jetbrains.anko.doAsync
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -64,9 +63,8 @@ class CamViewActivity : AppCompatActivity() {
 
     private fun onActionPerform() {
         fabCapture.setOnClickListener {
-            doAsync {
-                takePicture()
-            }
+            takePicture()
+
 
         }
         fabCamSwitch.setOnClickListener {
